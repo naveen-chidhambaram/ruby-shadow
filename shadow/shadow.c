@@ -18,7 +18,7 @@
 #ifdef RUBY19
 #define file_ptr(x) rb_io_stdio_file(x)
 #else
-#define file_ptr(x) (x)->f
+#define file_ptr(x) (x)->fd
 #endif
 
 #define NUM_FIELDS 10
@@ -31,7 +31,7 @@ static VALUE rb_sGroupEntry;
 static VALUE rb_eFileLock;
 
 
-static VALUE convert_pw_struct( struct spwd *entry ) 
+static VALUE convert_pw_struct( struct spwd *entry )
 {
   return rb_struct_new(rb_sPasswdEntry,
 		      rb_tainted_str_new2(entry->sp_namp),
