@@ -7,7 +7,7 @@
 require 'mkmf'
 require 'rbconfig'
 
-$CFLAGS << " -DRUBY19" if RUBY_VERSION ~! /^1\.8/
+$CFLAGS << " -DRUBY19" if RUBY_VERSION !~ /^1\.8/
 
 RbConfig::MAKEFILE_CONFIG["CC"] = ENV["CC"] if ENV["CC"]
 
