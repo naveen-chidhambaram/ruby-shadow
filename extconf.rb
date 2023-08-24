@@ -17,7 +17,8 @@ if RbConfig::MAKEFILE_CONFIG["CC"] =~ /gcc|clang/
   $CFLAGS << " -Wall"
 end
 
-implementation = case CONFIG['host_os']
+# https://github.com/apalmblad/ruby-shadow/pull/31
+implementation = case RbConfig::CONFIG['host_os']
                  when /linux/i; 'shadow'
                  when /sunos|solaris/i; 'shadow'
                  when /freebsd|mirbsd|netbsd|openbsd/i; 'pwd'
